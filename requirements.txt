@@ -1,4 +1,4 @@
 adapt-diagnostics==1.3.0 
-tensorflow==2.11.0
+tensorflow==2.11.1
 fastaparser==1.1
 matplotlib==3.3.4
