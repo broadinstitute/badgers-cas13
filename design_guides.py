@@ -29,14 +29,14 @@ except:
     pass
 
 # Importing DRAGON packages
-from dragon.models.cas13_mult import Cas13Mult
-from dragon.models.cas13_diff import Cas13Diff 
+from badgers.models.cas13_mult import Cas13Mult
+from badgers.models.cas13_diff import Cas13Diff 
 
-from dragon.utils.cas13_landscape import Cas13Landscape
-from dragon.utils import prepare_sequences as prep_seqs
-from dragon.explorers.evolutionary import EvolutionaryExplorer 
-from dragon.explorers.wgan_am import WGANExplorer
-from dragon.utils import import_fasta
+from badgers.utils.cas13_landscape import Cas13Landscape
+from badgers.utils import prepare_sequences as prep_seqs
+from badgers.explorers.evolutionary import EvolutionaryExplorer 
+from badgers.explorers.wgan_am import WGANExplorer
+from badgers.utils import import_fasta
 
 def run_wgan(args, site_df):
     """Uses the WGAN-AM algorithm to generate optimal guides.

@@ -3,10 +3,10 @@ This algorithm was inspired by the evolutionary algorithms described in the foll
 https://arxiv.org/abs/2010.02141, https://www.nature.com/articles/s41467-018-03746-3"""
 
 from typing import Optional, Tuple
-#from dragon.cas13_explorer import Cas13Explorer
+#from badgers.cas13_explorer import Cas13Explorer
 import flexs
-from dragon.utils import prepare_sequences as prep_seqs
-from dragon.utils.prepare_sequences import track_performance as track_performance
+from badgers.utils import prepare_sequences as prep_seqs
+from badgers.utils.prepare_sequences import track_performance as track_performance
 import numpy as np
 from numpy.random import choice
 import pandas as pd
@@ -97,10 +97,10 @@ class EvolutionaryExplorer(flexs.Explorer):
 
         return "".join(new_guide)
          
-    def propose_sequences(self, dragonsured_guides: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]: 
+    def propose_sequences(self, measured_guides: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]: 
         """Generate new guides via the evolutionary algorithm
         Args:
-            dragonsured_guides: FLEXS requires this input dataframe, but it is not used in this function.
+            measured_guides: FLEXS requires this input dataframe, but it is not used in this function.
             Rather, the parent guides are sampled from the sequences present in the target set (those in self.model.parent_df)
         Returns:
             A tuple of numpy arrays containing the generated guides and their fitnesses."""

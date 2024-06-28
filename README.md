@@ -1,9 +1,9 @@
-# DRAGON software package for Cas13 diagnostic guide design &nbsp;&middot;&nbsp; [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) 
+# BADGERS software package for Cas13 diagnostic guide design &nbsp;&middot;&nbsp; [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) 
 
 The algorithms implemented in this repository design diagnostic guides that optimize well-defined functions over viral sequence diversity. 
 
 ## Table of Contents
-* [Setting up the DRAGONs](#setting-up-the-dragons)
+* [Setting up BADGERS](#setting-up-the-badgers)
 * [Using the  algorithms](#using-the-algorithms)
 * [Output format](#output-format)
 * [Example usage](#example-usage)
@@ -12,21 +12,21 @@ The algorithms implemented in this repository design diagnostic guides that opti
 * [Summary of contents](#summary-of-contents)
 * [License](#license)
 
-## Setting up the DRAGONs
+## Setting up the BADGERS
 
 The algorithms developed in this project depend on several Python packages. Two principal dependencies are [ADAPT](https://github.com/broadinstitute/adapt/) (which includes the predictive models we use) and [flexs](https://github.com/samsinai/FLEXS) (which implements algorithms for exploring fitness landscapes).
 
-We've included a script, [`setup.sh`](./setup.sh), that will download the required Python dependencies and install the dragon-cas13 Python package.
+We've included a script, [`setup.sh`](./setup.sh), that will download the required Python dependencies and install the badgers-cas13 Python package.
 
 To setup the package, we suggest cloning the repository and running the setup script as follows:
 ```bash
 # Clone the repository
-git clone https://github.com/broadinstitute/dragon-cas13.git
-cd dragon-cas13
+git clone https://github.com/broadinstitute/badgers-cas13.git 
+cd badgers-cas13
 
 # Create and activate a conda environment
-conda create --name dragon-cas13 python=3.7.10
-conda activate dragon-cas13
+conda create --name badgers-cas13 python=3.7.10
+conda activate badgers-cas13
 
 # Run the setup script
 ./setup.sh
@@ -67,7 +67,7 @@ The algorithm creates one file per explorer run, stored at `results_path/results
 
 All compiled results files have the following columns:
 * `algo` is the algorithm used to design the guides.
-* `fitness` is the fitness of the guide computed for the design objective specified (either `mult` or `diff`), as described in the DRAGON manuscript. These fitness values are helpful to use for relative comparisons against other guides designed for the same objective on the same input sequences, but are not meant for interpretation in an absolute sense. It is normal for these fitness values to be negative.
+* `fitness` is the fitness of the guide computed for the design objective specified (either `mult` or `diff`), as described in the BADGERS manuscript. These fitness values are helpful to use for relative comparisons against other guides designed for the same objective on the same input sequences, but are not meant for interpretation in an absolute sense. It is normal for these fitness values to be negative.
 * `guide_sequence` is the sequence of the guide that was designed by the algorithm. *NOTE: This is in the frame of the protospacer, so it must be reverse-complemented, converted from a DNA to RNA sequence, and have the LwCas13a direct repeat added on in order to serve as a functional guide RNA sequence.*
 * `start_pos` indicates the positions in the target where the guide binds. More specifically, the guide's spacer binds the positions `start_pos` to `start_pos + 28` in the target.
 * `shannon_entropy` is the entropy at that genomic site.
@@ -117,9 +117,9 @@ Below is a summary of this repository's contents:
 * `design_guides.py`: Main python program that should be run by users. This program, which is described above, designs diagnostic guides using the model-based exploration algorithms.
 * `requirements.txt`: List of the pip package dependencies that are required to be installed for the algorithms to run.
 * `examples/input/`: Contains sample aligned FASTA files of viral genomes and .tsvs for particular genomic regions that can be used to test the algorithms.
-* `dragon/utils/`: Scripts that enable the import of genomic sequences from FASTA files, the manipulation of DNA/RNA sequences, the training and import of the WGAN, and the usage of the predictive models.
-* `dragon/explorers/`: Scripts that implement both the WGAN-AM algorithm and the evolutionary algorithm explorers.
-* `dragon/models/`: Scripts that evaluate the fitness of guides designed for two objective functions: multi-target detection (cas13_mult) and variant identification (cas13_diff).
+* `badgers/utils/`: Scripts that enable the import of genomic sequences from FASTA files, the manipulation of DNA/RNA sequences, the training and import of the WGAN, and the usage of the predictive models.
+* `badgers/explorers/`: Scripts that implement both the WGAN-AM algorithm and the evolutionary algorithm explorers.
+* `badgers/models/`: Scripts that evaluate the fitness of guides designed for two objective functions: multi-target detection (cas13_mult) and variant identification (cas13_diff).
 
 ## License
-The DRAGON design software is licensed under the terms of the [MIT license](./LICENSE).
+The BADGERS design software is licensed under the terms of the [MIT license](./LICENSE).

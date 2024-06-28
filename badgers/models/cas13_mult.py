@@ -1,8 +1,8 @@
 """Define the multi-target detection model class."""
 import numpy as np
-from dragon.utils import prepare_sequences as prep_seqs
+from badgers.utils import prepare_sequences as prep_seqs
 import tensorflow as tf
-from dragon.utils import cas13_cnn as cas13_cnn
+from badgers.utils import cas13_cnn as cas13_cnn
 import pandas as pd 
 from flexs import Model
 

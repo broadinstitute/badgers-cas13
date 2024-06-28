@@ -5,10 +5,10 @@ import pandas as pd
 import os 
 
 import flexs
-from dragon.utils.prepare_sequences import mismatch_nuc_specific as mismatch_nuc_specific
-from dragon.utils.prepare_sequences import track_performance as track_performance
-import dragon.utils.prepare_sequences as prep_seqs
-import dragon.utils.gan as gan
+from badgers.utils.prepare_sequences import mismatch_nuc_specific as mismatch_nuc_specific
+from badgers.utils.prepare_sequences import track_performance as track_performance
+import badgers.utils.prepare_sequences as prep_seqs
+import badgers.utils.gan as gan
 import tensorflow as tf
 
 class WGANExplorer(flexs.Explorer):
@@ -70,15 +70,15 @@ class WGANExplorer(flexs.Explorer):
         self.local_s = local_s
         self.optimizer = optimizer
             
-    def propose_sequences(self, dragonsured_sequences: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
+    def propose_sequences(self, measured_sequences: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
         """Generate new guides via the WGAN-AM algorithm
          Args:
-            dragonsured_guides: FLEXS requires this input dataframe, but it is not used in this function. 
+            measured_sequences: FLEXS requires this input dataframe, but it is not used in this function. 
             Rather, the parent guides are sampled from the sequences present in the target set (those in self.model.parent_df)
         Returns:
             A tuple of numpy arrays containing the generated guides and their fitnesses."""
 
-        last_round = dragonsured_sequences["round"].max()
+        last_round = measured_sequences["round"].max()
         
         # A new random seed is set for each round, so the random starting point is different for each round
         gan.set_seed(last_round + np.random.randint(0, 100))
