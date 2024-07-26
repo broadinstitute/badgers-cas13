@@ -21,7 +21,7 @@ We've included a script, [`setup.sh`](./setup.sh), that will download the requir
 To setup the package, we suggest cloning the repository and running the setup script as follows:
 ```bash
 # Clone the repository
-git clone https://github.com/broadinstitute/badgers-cas13.git 
+git lfs clone https://github.com/broadinstitute/badgers-cas13.git 
 cd badgers-cas13
 
 # Create and activate a conda environment
